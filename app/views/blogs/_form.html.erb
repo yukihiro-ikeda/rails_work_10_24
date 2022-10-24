@@ -1,0 +1,9 @@
+<%= form_with(model:@blog, local:true) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %><br>
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+  <%= form.submit 'ツイートする' %>
+<% end %>
+
+<%= link_to'投稿一覧', blogs_path %>

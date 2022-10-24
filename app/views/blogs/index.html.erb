@@ -1,0 +1,16 @@
+<h1>Index</h1>
+<h2>投稿一覧</h2>
+<ul>
+  <% @blogs.each do |blog| %>
+  <li>タイトル: <%= blog.title %> || コンテンツ: <%= blog.content %>
+  <%= link_to 'ブログ詳細', blog_path(blog.id) %>
+  <%= link_to 'ブログ編集', edit_blog_path(blog.id) %>
+  <%= link_to 'ブログ削除', blog_path(blog.id), method: :delete %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to '新規ツイート作成', new_blog_path %>
+
+
+
