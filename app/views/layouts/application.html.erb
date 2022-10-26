@@ -6,9 +6,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    <ul>
+      <% if logged_in? %>
+        <li><%= link_to "ツイート一覧はこちら", blogs_path %></li>
+        <li><%= link_to "アカウント情報詳細はこちら", user_path(current_user) %></li>
+        <li><%= link_to "ログアウト", session_path(current_user), method: :delete %>
+      <% else %>
+        <li><%= link_to "アカウント作成はこちら", new_user_path %></li>
+        <li><%= link_to "ログインはこちら", new_session_path %></li>
+      <% end %>
+    </ul>
     <%= yield %>
   </body>
 </html>
